@@ -15,17 +15,23 @@ public class HelloApplication extends Application {
         int size = 100;
         Canvas canvas = new Canvas(500, 300);
         GraphicsContext gc = canvas.getGraphicsContext2D();
+        gc.setFill(Color.WHEAT);
+        gc.fillRect(0,0,500,500);
         Circle[] circles = {
-                new Circle(Color.color(1, 1, 0), 0, 0, 100),
-                new Circle(Color.color(0, 1, 1), 100, 100, 100),
-                new Circle(Color.color(1, 0, 1), 200, 200, 100)
+                new Circle(Color.color(0, 0, 0),          0,   0, 200),
+                new Circle(Color.color(1/4., 1/4., 1/4.), 100, 0, 100),
+                new Circle(Color.color(2/4., 2/4., 2/4.), 200, 0, 100),
+                new Circle(Color.color(3/4., 3/4., 3/4.), 300, 0, 100),
+                new Circle(Color.color(4/4., 4/4., 4/4.), 400, 0, 100),
         };
-
-        for (Circle c : circles) {
-            gc.setFill(c.color());
-            gc.fillOval(c.x(), c.y(), c.radius(), c.radius());
+        for(int i = 0; i < 5; ++i) {
+            for (Circle c : circles) {
+                gc.setFill(c.color());
+                gc.fillOval(c.x(), c.y(), c.radius(), c.radius());
+                System.out.println(i);
+            }
         }
-        stage.setTitle("Jouons avec RGB.");
+        stage.setTitle("GMnsQzuSi-FMEMY_NNTE");
         stage.setScene(new Scene(new VBox(canvas)));
         stage.show();
     }
