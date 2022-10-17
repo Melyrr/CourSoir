@@ -15,20 +15,23 @@ public class HelloApplication extends Application {
         Canvas canvas = new Canvas(500, 500);
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
-        Circle[] circles = {
-                new Circle(Color.LIGHTCORAL, -120, 100, 600),
-        new Circle(Color.ALICEBLUE, 180, 20, 450),
-        new Circle(Color.ORANGE, 10, 10, 100),
-        new Circle(Color.AQUAMARINE, 200, 300, 150),
-        new Circle(Color.YELLOW, 30, 150, 120),
-        new Circle(Color.AQUA, 3000, 200, 110)
+        FormParameters[] parameters = {
+                new FormParameters(false, Color.DARKGOLDENROD, 100, 120, 400),
+                new FormParameters(true, Color.DARKCYAN, -50, -50, 500),
+                new FormParameters(true, Color.DARKMAGENTA, 200, 200, 250),
+                new FormParameters(false, Color.DARKBLUE, 80, 100, 150)
         };
 
-        for (Circle c : circles) {
-            gc.setFill(c.color());
-            gc.fillOval(c.x(), c.y(), c.radius(), c.radius());
+        for (FormParameters p : parameters) {
+            gc.setFill(p.color());
+            if (p.isCircle()){
+                gc.fillOval(p.x(),p.y(),p.size(),p.size());
+            }else{
+                gc.fillRect(p.x(),p.y(),p.size(),p.size());
+            }
         }
-        stage.setTitle("n cercles en record !");
+
+        stage.setTitle("N cercles ou carré");
         stage.setScene(new Scene(new VBox(canvas)));
         stage.show();
     }
