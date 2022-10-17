@@ -12,18 +12,23 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        Canvas canvas = new Canvas(500,500);
+        Canvas canvas = new Canvas(500, 500);
         GraphicsContext gc = canvas.getGraphicsContext2D();
-        Square[] squares = {
-                new Square(Color.RED,100,50),
-                new Square(Color.BLACK,300,100),
-                new Square(Color.BLUE,50,300),
+
+        Circle[] circles = {
+                new Circle(Color.LIGHTCORAL, -120, 100, 600),
+        new Circle(Color.ALICEBLUE, 180, 20, 450),
+        new Circle(Color.ORANGE, 10, 10, 100),
+        new Circle(Color.AQUAMARINE, 200, 300, 150),
+        new Circle(Color.YELLOW, 30, 150, 120),
+        new Circle(Color.AQUA, 3000, 200, 110)
         };
-        for ( Square square : squares){
-            gc.setFill(square.color());
-            gc.fillRect(square.x(),square.y(),100,100);
+
+        for (Circle c : circles) {
+            gc.setFill(c.color());
+            gc.fillOval(c.x(), c.y(), c.radius(), c.radius());
         }
-        stage.setTitle("Trois triangles !");
+        stage.setTitle("n cercles en record !");
         stage.setScene(new Scene(new VBox(canvas)));
         stage.show();
     }
