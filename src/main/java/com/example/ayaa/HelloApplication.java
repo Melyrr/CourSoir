@@ -14,14 +14,15 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         Canvas canvas = new Canvas(500,500);
         GraphicsContext gc = canvas.getGraphicsContext2D();
-        gc.setFill(Color.BLACK);
-        gc.fillRect(0, 0, 500, 500);
-        gc.setFill(Color.RED);
-        gc.fillRect(100, 50, 100, 100);
-        gc.setFill(Color.GREEN);
-        gc.fillRect(300, 100, 100, 100);
-        gc.setFill(Color.BLUE);
-        gc.fillRect(50, 300, 100, 100);
+        Square[] squares = {
+                new Square(Color.RED,100,50),
+                new Square(Color.BLACK,300,100),
+                new Square(Color.BLUE,50,300),
+        };
+        for ( Square square : squares){
+            gc.setFill(square.color());
+            gc.fillRect(square.x(),square.y(),100,100);
+        }
         stage.setTitle("Trois triangles !");
         stage.setScene(new Scene(new VBox(canvas)));
         stage.show();
