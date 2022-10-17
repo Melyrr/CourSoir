@@ -31,7 +31,7 @@ public class HelloApplication extends Application {
             }
         }
 
-        stage.setTitle("N cercles ou carré");
+        stage.setTitle("N cercle ou carré");
         stage.setScene(new Scene(new VBox(canvas)));
         stage.show();
     }
