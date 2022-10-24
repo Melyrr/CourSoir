@@ -15,10 +15,29 @@ public class HelloApplication extends Application {
         int size = 100;
         Canvas canvas = new Canvas(400, 400);
         GraphicsContext gc = canvas.getGraphicsContext2D();
-        gc.setFill(Color.rgb(1, 1, 0));
-        gc.fillRect(50, 50, 300, 300);
-        stage.setTitle("Carré RGB");
+
+        gc.setFill(Color.BLUE);
+        gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight() / 2);
+        gc.setFill(Color.PURPLE);
+        gc.fillRect(0, canvas.getHeight() / 2, canvas.getWidth(), canvas.getHeight());
+
+        canvas.setOnMouseMoved(event -> {
+            System.out.println(event.getX() + " " + event.getY());
+            if (event.getY() < canvas.getHeight() / 2) {
+                gc.setFill(Color.AQUA);
+                gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight() / 2);
+                gc.setFill(Color.PURPLE);
+                gc.fillRect(0, canvas.getHeight() / 2, canvas.getWidth(), canvas.getHeight());
+            } else {
+                gc.setFill(Color.BLUE);
+                gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight() / 2);
+                gc.setFill(Color.PINK);
+                gc.fillRect(0, canvas.getHeight() / 2, canvas.getWidth(), canvas.getHeight());
+            }
+        });
+
         stage.setScene(new Scene(new VBox(canvas)));
+        stage.setTitle("demo mouse");
         stage.show();
     }
     public static void main(String[] args) {
