@@ -14,51 +14,28 @@ import java.util.Random;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        Canvas canvas = new Canvas(800, 800);
+        double width = 100;
+        Canvas canvas = new Canvas(500, 300);
         GraphicsContext gc = canvas.getGraphicsContext2D();
-
-        gc.setFill(Color.BLACK);
+        gc.setFill(Color.RED);
         gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
-            double width = 400;
-            double a = 0;
-            for (int i = 0; i < 20; ++i) {
-                gc.setFill(Color.color(Math.random(), Math.random(), Math.random()));
-                gc.fillRect(a, a, width, width);
-                width = width - 25;
-                a = a + 12.5;
-            }
-            double b=400;
-            double z = 400;
-            for (int i = 0; i < 20; ++i) {
-                gc.setFill(Color.color(Math.random(), Math.random(), Math.random()));
-                gc.fillRect(b, b, z, z);
-                z = z - 25;
-                b = b + 12.5;
-            }
-            double az = 400;
-            double av = 400;
-            double am = 0;
-            for (int i = 0; i < 20; ++i) {
-                gc.setFill(Color.color(Math.random(), Math.random(), Math.random()));
-                gc.fillRect(0+am, av, az, az);
-                az = az - 25;
-                av = av + 12.5;
-                am= am + 12.5;
-            }
-        double ak = 400;
-        double al = 400;
-        double aj = 0;
-        for (int i = 0; i < 20; ++i) {
-            gc.setFill(Color.color(Math.random(), Math.random(), Math.random()));
-            gc.fillRect(al, 0+aj, ak, ak);
-            ak = ak - 25;
-            al = al + 12.5;
-            aj= aj + 12.5;
-        }
+
+        drawOval(canvas, 100, 0,0);
+        drawOval(canvas, 100, 100,0.25);
+        drawOval(canvas, 100, 200,0.5);
+        drawOval(canvas, 100, 300,0.75);
+        drawOval(canvas, 100, 400,1);
+
+
         stage.setScene(new Scene(new VBox(canvas)));
-        stage.setTitle("Rectangle inmbriqué avec des couleurs différentes*4");
+        stage.setTitle("Progression de gris");
         stage.show();
+    }
+    private void drawOval(Canvas canvas, double width, double x, double percent){
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        gc.setFill(Color.color(percent,percent,percent));
+        gc.fillOval(x,0,width,3*width);
     }
     public static void main(String[] args) {
         launch();
