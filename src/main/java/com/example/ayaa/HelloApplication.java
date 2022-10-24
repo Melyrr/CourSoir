@@ -14,28 +14,23 @@ import java.util.Random;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        double radius = 20;
+        double width = 500;
+        double a = 0;
         Canvas canvas = new Canvas(500, 500);
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
         gc.setFill(Color.BLACK);
         gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
-        for (int i = 0; i < 500; ++i) {
-            double x = Math.random() * (canvas.getWidth() - radius);
-            double y = Math.random() * (canvas.getHeight() - radius);
-            Random rand = new Random();
-            int n = rand.nextInt(50);
-            if(n>25){
-                gc.setFill(Color.PURPLE);
-            }else{
-                gc.setFill(Color.YELLOW);
-            }
-            gc.fillOval(x, y, radius, radius);
+        for (int i = 0; i < 20; ++i) {
+            gc.setFill(Color.color(Math.random(), Math.random(), Math.random()));
+            gc.fillRect(a,a,width,width);
+            width=width-25;
+            a=a+12.5;
         }
 
         stage.setScene(new Scene(new VBox(canvas)));
-        stage.setTitle("Cercle placé au hasard");
+        stage.setTitle("Rectangle inmbriqué avec des couleurs différentes");
         stage.show();
     }
     public static void main(String[] args) {
