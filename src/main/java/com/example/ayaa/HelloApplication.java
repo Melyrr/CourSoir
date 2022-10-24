@@ -37,7 +37,7 @@ public class HelloApplication extends Application {
         });
 
         stage.setScene(new Scene(new VBox(canvas)));
-        stage.setTitle("demo mouse");
+        stage.setTitle("demo mouses");
         stage.show();
     }
     public static void main(String[] args) {
