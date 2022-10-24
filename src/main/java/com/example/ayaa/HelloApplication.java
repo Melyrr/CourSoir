@@ -9,6 +9,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.lang.Math;
+import java.util.Random;
 
 public class HelloApplication extends Application {
     @Override
@@ -20,10 +21,16 @@ public class HelloApplication extends Application {
         gc.setFill(Color.BLACK);
         gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
-        for (int i = 0; i < 2000; ++i) {
+        for (int i = 0; i < 500; ++i) {
             double x = Math.random() * (canvas.getWidth() - radius);
             double y = Math.random() * (canvas.getHeight() - radius);
-            gc.setFill(Color.color(Math.random(), Math.random(), Math.random()));
+            Random rand = new Random();
+            int n = rand.nextInt(50);
+            if(n>25){
+                gc.setFill(Color.PURPLE);
+            }else{
+                gc.setFill(Color.YELLOW);
+            }
             gc.fillOval(x, y, radius, radius);
         }
 
