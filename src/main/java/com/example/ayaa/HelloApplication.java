@@ -20,14 +20,10 @@ public class HelloApplication extends Application {
         gc.setFill(Color.BLACK);
         gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
-        for (int i = 0; i < 500; ++i) {
+        for (int i = 0; i < 2000; ++i) {
             double x = Math.random() * (canvas.getWidth() - radius);
             double y = Math.random() * (canvas.getHeight() - radius);
-            if (y <= canvas.getHeight() / 2 - radius / 2) {
-                gc.setFill(Color.GOLD);
-            } else {
-                gc.setFill(Color.ORANGE);
-            }
+            gc.setFill(Color.color(Math.random(), Math.random(), Math.random()));
             gc.fillOval(x, y, radius, radius);
         }
 
