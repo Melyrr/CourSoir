@@ -13,16 +13,20 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         int size = 100;
-        Canvas canvas = new Canvas(500, 300);
+        Canvas canvas = new Canvas(500, 150);
         GraphicsContext gc = canvas.getGraphicsContext2D();
-        gc.setFill(Color.WHEAT);
-        gc.fillRect(0,0,500,500);
         Circle[] circles = {
-                new Circle(Color.color(0, 0, 0),          0,   100, 100),
-                new Circle(Color.color(1/4., 1/4., 1/4.), 100, 100, 100),
-                new Circle(Color.color(2/4., 2/4., 2/4.), 200, 100, 100),
-                new Circle(Color.color(3/4., 3/4., 3/4.), 300, 100, 100),
-                new Circle(Color.color(4/4., 4/4., 4/4.), 400, 100, 100),
+                new Circle(Color.rgb(255, 0, 0),          0,   0, 45),
+                new Circle(Color.rgb(213, 16, 17),          50,   0, 45),
+                new Circle(Color.rgb(170, 23, 23), 100, 0, 45),
+                new Circle(Color.rgb(112, 65, 6), 150, 0, 45),
+                new Circle(Color.rgb(86, 73, 14), 200, 0, 45),
+                new Circle(Color.rgb(77, 94, 17), 250, 0, 45),
+                new Circle(Color.rgb(160, 180, 53), 300, 0, 45),
+                new Circle(Color.rgb(140, 190, 40), 400, 0, 45),
+                new Circle(Color.rgb(100, 230, 60), 450, 0, 45),
+                new Circle(Color.rgb(172, 255, 0), 500, 0, 45),
+
         };
         for(int i = 0; i < 5; ++i) {
             for (Circle c : circles) {
@@ -30,7 +34,7 @@ public class HelloApplication extends Application {
                 gc.fillOval(c.x(), c.y(), c.radius(), c.radius());
             }
         }
-        stage.setTitle("5 cercle");
+        stage.setTitle("Color RGB red-green-blue");
         stage.setScene(new Scene(new VBox(canvas)));
         stage.show();
     }
