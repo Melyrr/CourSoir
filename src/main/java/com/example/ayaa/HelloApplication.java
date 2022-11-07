@@ -14,28 +14,27 @@ import java.util.Random;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        double width = 100;
-        Canvas canvas = new Canvas(500, 300);
+        Canvas canvas = new Canvas(800, 800);
         GraphicsContext gc = canvas.getGraphicsContext2D();
-        gc.setFill(Color.RED);
+
+
+
+        gc.setFill(Color.color(Math.random(), Math.random(), Math.random()));
         gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        gc.setFill(Color.color(Math.random(), Math.random(), Math.random()));
+        gc.fillOval(0,0,800,800);
+        gc.setFill(Color.color(Math.random(), Math.random(), Math.random()));
+        gc.fillRect(118,115,560, 570);
+        canvas.setOnMouseMoved(event -> {
+                    System.out.println(event.getX() + " " + event.getY());
+                });
 
 
-        drawOval(canvas, 100, 0,0);
-        drawOval(canvas, 100, 100,0.25);
-        drawOval(canvas, 100, 200,0.5);
-        drawOval(canvas, 100, 300,0.75);
-        drawOval(canvas, 100, 400,1);
 
 
         stage.setScene(new Scene(new VBox(canvas)));
-        stage.setTitle("Progression de gris");
+        stage.setTitle("Rectangle inmbriqué avec des couleurs différentes*4");
         stage.show();
-    }
-    private void drawOval(Canvas canvas, double width, double x, double percent){
-        GraphicsContext gc = canvas.getGraphicsContext2D();
-        gc.setFill(Color.color(percent,percent,percent));
-        gc.fillOval(x,0,width,3*width);
     }
     public static void main(String[] args) {
         launch();
