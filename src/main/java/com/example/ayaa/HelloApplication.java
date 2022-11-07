@@ -22,7 +22,7 @@ public class HelloApplication extends Application {
         drawOval(canvas, width, 400, 1);
 
         stage.setScene(new Scene(new VBox(canvas)));
-        stage.setTitle("Pogression de gris ( avec méthode)");
+        stage.setTitle("Pogression de grzis ( avec méthode)");
         stage.show();
     }
     private void drawOval(Canvas canvas, double width, double x, double percent) {
